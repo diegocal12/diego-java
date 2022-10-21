@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css3.css">
+</head>
+<body>
+    <header>
+        <h1>directorio de amigos</h1>
+    </header>
+    <main>
+        <section class="formulario">
+            <h2>agregar amigo</h2>
+            <form action="" id="formulario">
+                <label for="nombre">nombre:
+                    <input type="text" name="nombre" >                    
+                </label>
+                <label for="telefono">telefono:
+                    <input type="text"  name="telefono">   
+                </label>
+                <label for="correo">correo:
+                    <input type="text" name="correo">   
+                </label>
+                <label for="foto">foto:
+                    <input type="text" name="foto">   
+                </label>
+                <div id="alertas"></div>
+                <div> 
+                    <button id="btnGuardar">Guardar</button>
+                    <button id="btnCancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+        <section class="lista">
+          <h2>mis amigos</h2>
+          <section class="listaAmigos">
+
+          </section>
+        </section>
+    </main>
+  
+    <div class="ocultar detallesAmigo" id="detallesAmigo">
+        <!-- <img src="https://picsum.photos/200" alt=""> -->
+        <!-- <h3>guillermo</h3> -->
+        <!-- <p><span>correo:</span></p> -->
+    </div>
+      <script src="index.js"></script>
+
+</body>
+</html>

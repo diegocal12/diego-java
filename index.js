@@ -80,16 +80,48 @@ btnCancelar.addEventListener("click",(event)=>{
     limpiar();
     event.preventDefault();
 });
-// para mandar a llamar
- btnGuardar.addEventListener("click",(event)=>{
-let contacto={
-    nombre:formulario["nombre"].value,
-    telefono:formulario["telefono"].value,
-correo:formulario["correo"].value,
-foto:formulario["foto"].value,
-};
-//validacion
-const btnEnviar = document.getElementById('btn-enviar');
+
+var validation = "";
+
+function validateForm(contacto) {
+   
+//Declaracion 
+// let validation;
+    //inicializacion
+// validation = "";
+
+
+
+// Creas un array con el formulario 
+
+
+
+//revisar si alguno viene vacio
+if(contacto['nombre'] == "")
+validation += "Nombre es requerido ";
+if(contacto['telefono'] == "")
+validation += "Telefono es requerido ";
+if(contacto['correo'] == "")
+validation += "Correo es requerido ";
+if(contacto['foto'] == "")
+validation += "Foto es requerido ";
+
+// Regex (Expreciones regulares)
+let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+let email = /(^\w.*@\w+\.\w)/;
+
+if(!contacto['telefono'].match(phoneno)) {
+validation += "Este no es un telefono Valido "};
+
+// Revisar que un amigo no tenga este telefono
+// amigos.find()
+// {
+// };
+
+if(!contacto['correo'].match(email)) {
+validation += "Este no es un correo Valido"};
+
+
 
 const validación = (e) => {
   e.preventDefault();
