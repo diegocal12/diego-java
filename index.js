@@ -4,11 +4,13 @@ let btnGuardar=document.querySelector("#btnGuardar");
 let btnCancelar=document.querySelector("#btnCancelar");
 
 
-  
+
+// zzzz
 
 
 let lista=document.querySelector(".listaAmigos");
 let formulario=document.querySelector("#formulario");
+let found;
 
 
 function limpiar(){
@@ -72,11 +74,9 @@ let cerrar=document.querySelector("#cerrar");
      cerrar.addEventListener("click",(event)=>{
         Detalles.classList.add("ocultar")
      })
+// sss
 
 }
-
-
-
 btnCancelar.addEventListener("click",(event)=>{
 
     limpiar();
@@ -84,20 +84,12 @@ btnCancelar.addEventListener("click",(event)=>{
 });
 
 var validation = "";
-
-
-function validateForm(contacto) {
-   
+function validateForm(contacto) { 
 //Declaracion 
 // let validation;
     //inicializacion
 // validation = "";
-
-
-
 // Creas un array con el formulario 
-
-
 validation="";
 //revisar si alguno viene vacio
 if(contacto['nombre'] == "")
@@ -115,16 +107,16 @@ let email = /(^\w.*@\w+\.\w)/;
 
 if(!contacto['telefono'].match(phoneno)) {
 validation += "Este no es un telefono Valido "};
-
-
-
 // Revisar que un amigo no tenga este telefono
 // amigos.find()
 // {
 // };
-
 if(!contacto['correo'].match(email)) {
 validation += "Este no es un correo Valido"};
+// let alertas
+
+// if(!contacto[validateForm]==telefono)
+// validation += alertas;
 
     if(validation=="")
     {
@@ -134,31 +126,42 @@ validation += "Este no es un correo Valido"};
     {
         return false;
     }
-    
-    
 }
-function validatetele(amigos){
-    const found = amigos.find(element =>element > telefono )
-    console.log(found);
-
-    
-
-
-}
+//
+// }
 // Subscripcion a la escucha del evento clck
 btnGuardar.addEventListener("click", (event)=>{
+    let mens = document.querySelector("#mens");
+
     let contacto={
         nombre:formulario["nombre"].value,
         telefono:formulario["telefono"].value,
         correo:formulario["correo"].value,
         foto:formulario["foto"].value,
     };
-
-    if(validateForm(contacto)){
-        amigos.push(contacto);
-        limpiar();
-        pintar();
-    }
     
+    found = amigos.find((prueba) => {
+        if (prueba.telefono == formulario[1].value) {
+            event.preventDefault(); 
+         
+            return prueba;
+          
+        } 
+    })
+    //    casi finañ
+    // casi final bien
+    if (found) {
+        console.log("inicio");
+
+        mens.innerHTML +="telefono repetido";
+        event.preventDefault();
+        mens.removeAttribute("class");
+        console.log("medio");
+    }
+    if(validateForm(contacto) && found == null){
+        amigos.push(contacto); 
+        limpiar();
+        pintar();  
+    }
     event.preventDefault();
 })
