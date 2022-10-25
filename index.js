@@ -10,6 +10,7 @@ let btnCancelar=document.querySelector("#btnCancelar");
 let lista=document.querySelector(".listaAmigos");
 let formulario=document.querySelector("#formulario");
 
+
 function limpiar(){
     formulario[0].value="";
     formulario[1].value="";
@@ -23,7 +24,7 @@ function pintar(){
         amigos.forEach((contacto,index)=>{
             let amigo=document.createElement("div");
             amigo.innerHTML=`<p>${contacto.nombre}</p><button class="muestraDetalles"><input type="hidden" value="${contacto.telefono}" />Detalles</button>
-                                                  <button class="eliminarContacto"indice=${index}">Borrar</button>`;
+                                                  <button class="eliminarContacto" indice="${index}">Borrar</button>`;
             lista.appendChild(amigo);
         });
         let botones=document.getElementsByClassName("muestraDetalles");
@@ -34,13 +35,12 @@ function pintar(){
 
             });
         }
-        botones=document.getElementsByClassName("eliminarcontacto");
-        for (let i =0; i< botones.length; i++){
-            const element =botones[i];
+        botones=document.getElementsByClassName("eliminarContacto");
+        for (let i =0; i < botones.length; i++){
+            const element = botones[i];
             element.addEventListener("click",()=>{
-                amigo.splice(element.getAttribute("click",()=>{
-
-                }))
+                amigos.splice(element.getAttribute("indice"),1);
+                pintar();
             })
         }
     }
@@ -57,15 +57,15 @@ function showDetalles(tel){
     let amigo=amigos.find(a=>{
         if(a.telefono==tel){
             return a;
-
         }
     });
    Detalles.innerHTML=`<img src="${amigos.foto}" alt="">
     <h3>${amigos.nombre}</h3>
-   <p><span>Telefono:</span>${amigo.foto}</p>
+   <p><span>Telefono:</span>${amigo.telefono}</p>
    <p><span>correo:</span>${amigo.correo}</p>
      <button id="cerrar">cerrar</button>`;
     Detalles.classList.remove("ocultar");
+
 let cerrar=document.querySelector("#cerrar");
 
      
@@ -76,12 +76,15 @@ let cerrar=document.querySelector("#cerrar");
 }
 
 
+
 btnCancelar.addEventListener("click",(event)=>{
+
     limpiar();
     event.preventDefault();
 });
 
 var validation = "";
+
 
 function validateForm(contacto) {
    
@@ -95,7 +98,7 @@ function validateForm(contacto) {
 // Creas un array con el formulario 
 
 
-
+validation="";
 //revisar si alguno viene vacio
 if(contacto['nombre'] == "")
 validation += "Nombre es requerido ";
@@ -113,6 +116,8 @@ let email = /(^\w.*@\w+\.\w)/;
 if(!contacto['telefono'].match(phoneno)) {
 validation += "Este no es un telefono Valido "};
 
+
+
 // Revisar que un amigo no tenga este telefono
 // amigos.find()
 // {
@@ -121,40 +126,39 @@ validation += "Este no es un telefono Valido "};
 if(!contacto['correo'].match(email)) {
 validation += "Este no es un correo Valido"};
 
-
-
-const validación = (e) => {
-  e.preventDefault();
-  const nombreDeUsuario = document.getElementById('usuario');
-  const direcciónEmail = document.getElementById('email');
-  if (usuario.value === "") {
-    alert("Por favor, escribe tu nombre de usuario.");
-    usuario.focus();
-    return false;
-  }
-  if (email.value === "") {
-    alert("Por favor, escribe tu correo electrónico");
-    email.focus();
-    return false;
-  }
-  
-  return true;
+    if(validation=="")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+    
 }
+function validatetele(amigos){
+    const found = amigos.find(element =>element > telefono )
+    console.log(found);
 
-submitBtn.addEventListener('click', validate);
-
-
-
-
-//final
-
-amigos.push(contacto);
-limpiar();
-pintar();
-event.preventDefault();
+    
 
 
+}
+// Subscripcion a la escucha del evento clck
+btnGuardar.addEventListener("click", (event)=>{
+    let contacto={
+        nombre:formulario["nombre"].value,
+        telefono:formulario["telefono"].value,
+        correo:formulario["correo"].value,
+        foto:formulario["foto"].value,
+    };
 
-
-
- });
+    if(validateForm(contacto)){
+        amigos.push(contacto);
+        limpiar();
+        pintar();
+    }
+    
+    event.preventDefault();
+})
