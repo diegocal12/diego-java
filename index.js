@@ -157,7 +157,10 @@ btnGuardar.addEventListener("click", (event)=>{
         event.preventDefault();
         mens.removeAttribute("class");
         console.log("medio");
-    }
+    }   
+
+
+
     if(validateForm(contacto) && found == null){
         amigos.push(contacto); 
         limpiar();
