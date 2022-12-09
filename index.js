@@ -7,6 +7,7 @@ let btnCancelar=document.querySelector("#btnCancelar");
 
 // zzzz
 
+// nuebvo 
 
 let lista=document.querySelector(".listaAmigos");
 let formulario=document.querySelector("#formulario");
@@ -84,6 +85,7 @@ btnCancelar.addEventListener("click",(event)=>{
 });
 
 var validation = "";
+
 function validateForm(contacto) { 
 //Declaracion 
 // let validation;
@@ -112,7 +114,9 @@ validation += "Este no es un telefono Valido "};
 // {
 // };
 if(!contacto['correo'].match(email)) {
+    
 validation += "Este no es un correo Valido"};
+
 // let alertas
 
 // if(!contacto[validateForm]==telefono)
