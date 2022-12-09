@@ -155,6 +155,7 @@ btnGuardar.addEventListener("click", (event)=>{
     //    casi finañ
     // casi final bien
     if (found) {
+        
         console.log("inicio");
 
         mens.innerHTML +="telefono repetido";
